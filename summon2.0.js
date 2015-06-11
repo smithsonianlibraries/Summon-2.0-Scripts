@@ -36,9 +36,18 @@ $(document).ready(function() {
 	// because they cannot do Internet. Fix that
 	$('form.flowLogin').find('input[type="submit"]').attr('title', 'Save and organize citations to make research and writing easier.').val('Log in to ProQuest Flow');
 	
+  var sillyLinkText,newText;
+  $("a.availabilityLink:contains(' Browse Similar')").each(function() {
+    sillyLinkText = $(this).text();
+    newText = sillyLinkText.replace(' Browse Similar','');
+    $(this).text(newText);
+  });
+
 	// Fix the two request buttons on the book detail page
   $("a.btn[href*='illiad']").text('Request from another library');
   $('.documentActions').find("a.btn[href*='gvsu.summon']").text('Request GVSU Copy').css('background','#069').css('color','#fff');
+
+
 
 }, 1500);
       
@@ -91,12 +100,6 @@ $(document).ready(function() {
 
   // Remove the text in availability links
 
-  var sillyLinkText,newText;
-  $("a.availabilityLink:contains(' Browse Similar')").each(function() {
-    sillyLinkText = $(this).text();
-    newText = sillyLinkText.replace(' Browse Similar','');
-    $(this).text(newText);
-  });
 
 
   // Extract a bib Number from a Summon docID (thanks, Dave Pattern!)
