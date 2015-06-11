@@ -37,7 +37,7 @@ $(document).ready(function() {
 	$('form.flowLogin').find('input[type="submit"]').attr('title', 'Save and organize citations to make research and writing easier.').val('Log in to ProQuest Flow');
 	
   var sillyLinkText,newText;
-  $("a.availabilityLink:contains(' Browse Similar')").each(function() {
+  $("a.availabilityLink:contains(' Browse Similar,')").each(function() {
     sillyLinkText = $(this).text();
     newText = sillyLinkText.replace(' Browse Similar','');
     $(this).text(newText);
@@ -49,7 +49,7 @@ $(document).ready(function() {
 
 
 
-}, 1500);
+}, 2000);
       
 
     
