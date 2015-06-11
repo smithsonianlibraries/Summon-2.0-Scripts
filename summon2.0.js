@@ -21,7 +21,7 @@ $(document).ready(function() {
 
       console.log('About to add the chat button...');
         // Accessability titles
-  $('div.searchBox div.queryBox span.caret').parent().attr('title','advanced search');
+      $('div.searchBox div.queryBox span.caret').parent().attr('title','advanced search');
 
   // Fix the homepage banner links, which are invisible because
   // they are white on a white background
@@ -36,7 +36,9 @@ $(document).ready(function() {
 	// because they cannot do Internet. Fix that
 	$('form.flowLogin').find('input[type="submit"]').attr('title', 'Save and organize citations to make research and writing easier.').val('Log in to ProQuest Flow');
 	
-	
+	// Fix the two request buttons on the book detail page
+  $("a.btn[href*='illiad']").text('Request from another library');
+  $('.documentActions').find("a.btn[href*='gvsu.summon']").text('Request GVSU Copy').css('background','#069').css('color','#fff');
 
 }, 1500);
       
