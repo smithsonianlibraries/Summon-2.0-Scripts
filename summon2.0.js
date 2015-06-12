@@ -52,7 +52,7 @@ $(document).ready(function() {
     newText = sillyLinkText.replace(' Browse Similar','');
     $(this).text(newText);
   });
-}, 2000);
+}, 3000);
       
 
     
