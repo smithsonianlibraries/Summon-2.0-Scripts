@@ -56,6 +56,12 @@ holdingsOnly label,
     background-position: 15% 50%;
 }
 
+/* Nobody wants to see 2 identical request buttons */
+
+.documentActionsContainer .documentActions a.btn.secondary:nth-child(2) {
+  display: none;
+}
+
 @media screen and (min-width:701px) and (max-width:1024px) {
 	#main .inner {
 		position: relative;
