@@ -8,49 +8,55 @@ $(document).ready(function() {
   var cssPath = '//gvsuliblabs.com/labs/summon2.0/',libDetailPageId, newHref, libCurrentURL, record, recordParts, thisID,libCurrentURL = window.location.hash.substring(1);
   // Add custom styles
   $('head').append('<link rel="stylesheet" type="text/css" href="' + cssPath + 'summon2.css" />');
+  console.log('Added custom stylesheet.');
 
 
     
-    setTimeout(function() {
-      $(".savedItemsFolderContainer").append('<div id="libchat_6290b3d40228a9e708fa7066d01f56bf"></div>');
-	  var chatScript = document.createElement('script');
+  setTimeout(function() {
+    $(".savedItemsFolderContainer").append('<div id="libchat_6290b3d40228a9e708fa7066d01f56bf"></div>');
+    var chatScript = document.createElement('script');
 	  chatScript.type = 'text/javascript';
 	  chatScript.src = '//v2.libanswers.com/load_chat.php?hash=6290b3d40228a9e708fa7066d01f56bf';
 	  document.body.appendChild(chatScript);
-	  
+	  console.log('Added the chat button.');
 
-      console.log('About to add the chat button...');
-        // Accessability titles
-      $('div.searchBox div.queryBox span.caret').parent().attr('title','advanced search');
+    // Accessability titles
+    $('div.searchBox div.queryBox span.caret').parent().attr('title','advanced search');
+    console.log('Provided accessibility to advanced search link.');
 
-  // Fix the homepage banner links, which are invisible because
-  // they are white on a white background
-  if($("div.home").css("display") !== 'none') {
-    $("div.home").prepend('<div id="home-banner" style="height:6em;background-color:#0065a4;">&nbsp;</div>');
-  }
+    // Fix the homepage banner links, which are invisible because
+    // they are white on a white background
+    if($("div.home").css("display") !== 'none') {
+      $("div.home").prepend('<div id="home-banner" style="height:6em;background-color:#0065a4;">&nbsp;</div>');
+    }
 
-  // I want the logo to be a bit bigger
-  $(".siteHeader .Logo img").attr("src", "//gvsu.edu/homepage/files/img/gvsu_logo.png");
+    // I want the logo to be a bit bigger
+    $(".siteHeader .Logo img").attr("src", "//gvsu.edu/homepage/files/img/gvsu_logo.png");
+    console.log('Made the logo bigger.');
 
-	// Proquest has 2 links both labeled "Log in" that go to different places
-	// because they cannot do Internet. Fix that
-	$('form.flowLogin').find('input[type="submit"]').attr('title', 'Save and organize citations to make research and writing easier.').val('Log in to ProQuest Flow');
-	
-	// Fix the two request buttons on the book detail page
-  $("a.btn[href*='illiad']").text('Request from another library');
-  $('.documentActions').find("a.btn[href*='gvsu.summon']").text('Request GVSU Copy').css('background','#069').css('color','#fff');
+    // Proquest has 2 links both labeled "Log in" that go to different places
+    // because they cannot do Internet. Fix that
+    $('form.flowLogin').find('input[type="submit"]').attr('title', 'Save and organize citations to make research and writing easier.').val('Log in to ProQuest Flow');
+    console.log('Changed the label and title for the ProQuest Flow log in link.');
 
-  // Overwrite any mention of Zumberge Library because we moved out of there 2 years ago and 
-  // what are you guys even doing over there at ProQuest I can't even
-  $('li[row-value="document.libraries"]').find('span[ng-class="valueClass"]:contains("Zumberge")').text('Mary Idema Pew Library');
+    // Fix the two request buttons on the book detail page
+    $("a.btn[href*='illiad']").text('Request from another library');
+    $('.documentActions').find("a.btn[href*='gvsu.summon']").text('Request GVSU Copy').css('background','#069').css('color','#fff');
+    console.log('Fixed the duplicate request button issue on book detail pane.');
 
-  var sillyLinkText,newText;
-  $("a.availabilityLink:contains(' Browse Similar,')").each(function() {
-    sillyLinkText = $(this).text();
-    newText = sillyLinkText.replace(' Browse Similar','');
-    $(this).text(newText);
-  });
-}, 6000);
+    // Overwrite any mention of Zumberge Library because we moved out of there 2 years ago and 
+    // what are you guys even doing over there at ProQuest I can't even
+    $('li[row-value="document.libraries"]').find('span[ng-class="valueClass"]:contains("Zumberge")').text('Mary Idema Pew Library');
+    console.log('Replaced a mention of Zumberge Library with Mary I.');
+
+    var sillyLinkText,newText;
+    $("a.availabilityLink:contains(' Browse Similar,')").each(function() {
+      sillyLinkText = $(this).text();
+      newText = sillyLinkText.replace(' Browse Similar','');
+      $(this).text(newText);
+      console.log('Removed silly text in book availability statement');
+    });
+  }, 6000);
       
 
     
