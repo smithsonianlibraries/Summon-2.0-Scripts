@@ -36,12 +36,6 @@ holdingsOnly label,
 	text-decoration: underline;
 }
 
-div#library-chat {
-    float: right;
-    position: relative;
-    bottom: 2.5em;
-    right: 1em;
-}
 
 .btn {
     display: inline-block;
