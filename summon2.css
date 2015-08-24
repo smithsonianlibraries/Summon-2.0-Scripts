@@ -64,14 +64,14 @@ holdingsOnly label,
     border-color: #ccc;
 }
 
-#library-chat a {
-    font-weight: bold;
-    border: 1px solid #333 !important;
-    font-size: 1em;
-    padding: .5em 1em .5em 3em !important;
+#library-chat {
 	position: relative;
 	right: -4em;
   display:inline-block;
+}
+
+#library-chat a { 
+    padding: .5em 1em .5em 3em !important;
 }
 
 #library_chat a[style] {
