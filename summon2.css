@@ -111,7 +111,7 @@ holdingsOnly label,
 	position: static !important;
 	top: 0;
 }
-#library_chat a {
+#library_chat {
 	top: -2.7em;
 	float: right;
 	margin-right: 2%;
