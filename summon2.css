@@ -36,22 +36,52 @@ holdingsOnly label,
 	text-decoration: underline;
 }
 
-#libchat_6290b3d40228a9e708fa7066d01f56bf button {
+div#library-chat {
+    float: right;
+    position: relative;
+    bottom: 2.5em;
+    right: 1em;
+}
+
+.btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    text-decoration: none;
+}
+
+.btn-default {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+}
+
+#library-chat a {
     font-weight: bold;
     border: 1px solid #333 !important;
     font-size: 1em;
     padding: .5em 1em .5em 3em !important;
 	position: relative;
 	right: -4em;
+  display:inline-block;
 }
 
-#libchat_6290b3d40228a9e708fa7066d01f56bf button.libchat_online[style] {
+#library_chat a[style] {
     background-image: url(//gvsu.edu/cms3/assets/741ECAAE-BD54-A816-71DAF591D1D7955C/chat-online.png) !important;
-    background-repeat: no-repeat;
-    background-position: 15% 50%;
-}
-#libchat_6290b3d40228a9e708fa7066d01f56bf button.libchat_offline[style] {
-     background-image: url(//gvsu.edu/cms3/assets/741ECAAE-BD54-A816-71DAF591D1D7955C/chat-offline.png) !important;
     background-repeat: no-repeat;
     background-position: 15% 50%;
 }
@@ -87,7 +117,7 @@ holdingsOnly label,
 	position: static !important;
 	top: 0;
 }
-#libchat_6290b3d40228a9e708fa7066d01f56bf button {
+#library_chat a {
 	top: -2.7em;
 	float: right;
 	margin-right: 2%;
