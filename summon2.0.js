@@ -13,12 +13,28 @@ $(document).ready(function() {
 
     
   setTimeout(function() {
-    $(".savedItemsFolderContainer").append('<div id="libchat_6290b3d40228a9e708fa7066d01f56bf"></div>');
+   /* $(".savedItemsFolderContainer").append('<div id="libchat_6290b3d40228a9e708fa7066d01f56bf"></div>');
     var chatScript = document.createElement('script');
 	  chatScript.type = 'text/javascript';
 	  chatScript.src = '//v2.libanswers.com/load_chat.php?hash=6290b3d40228a9e708fa7066d01f56bf';
-	  document.body.appendChild(chatScript);
-	  console.log('Added the chat button.');
+	  document.body.appendChild(chatScript); */
+
+    var li = document.createElement('div');
+    li.id = 'library-chat';
+    var libChatDiv = document.createElement('a');
+    libChatDiv.appendChild(document.createTextNode('Ask a Question'));
+    libChatDiv.className = 'btn btn-default';
+    li.appendChild(libChatDiv);
+    document.querySelector('.savedItemsFolderContainer').appendChild(li);
+    var chatWindow = function() {
+      window.open('http://labs.library.gvsu.edu/labs/chat', 'Ask a Question', 'menubar=yes,location=yes,resizable=yes,scrollbars=yes,left=20,top=20,width=460,height=460');
+    }
+    if (libChatDiv.addEventListener) {
+      libChatDiv.addEventListener('click', chatWindow, false);
+    } else {
+      libChatDiv.attachEvent('onclick', chatWindow);
+    }
+    console.log('Added the chat button.');
 
     // Accessability titles
     $('div.searchBox div.queryBox span.caret').parent().attr('title','advanced search');
