@@ -72,9 +72,6 @@ holdingsOnly label,
 
 #library-chat a { 
     padding: .5em 1em .5em 3em !important;
-}
-
-#library_chat a[style] {
     background-image: url(//gvsu.edu/cms3/assets/741ECAAE-BD54-A816-71DAF591D1D7955C/chat-online.png) !important;
     background-repeat: no-repeat;
     background-position: 15% 50%;
