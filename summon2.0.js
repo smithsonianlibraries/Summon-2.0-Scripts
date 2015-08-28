@@ -72,6 +72,45 @@ $(document).ready(function() {
       $(this).text(newText);
       console.log('Removed silly text in book availability statement');
     });
+
+    // Record eBook referrers
+  $('div#results ul.list-unstyled > li[ng-repeat="item in feed.items"]').each(function() { 
+    var result = $(this);
+    var format = $(this).find('div.contentType').find('span:nth-child(2)').text();
+
+    if(format == 'eBook') {
+      //console.log(format);
+      var openURL = $(result).find('span.Z3988').attr('title');
+      var opacNo = getParameterByName('rft.externalDocID');
+      opacNo = opacNo.slice(0, - 1);
+      console.log(opacNo);
+
+      // Now load the part of the catalog record that has the 856 link
+      var recordChunk = document.createElement('div');
+      recordChunk.className = 'providerHack';
+      recordChunk.style.display = 'none';
+      $(result).append(recordChunk);
+      $(result).find('.providerHack').load('http://gvsuliblabs.com/labs/ebooks/summonHelper.php?record='+opacNo);
+      console.log(opacNo);
+
+      $(result).find('a[role="link"]').click(function() {
+        var eBookProvider = $(this).closest('li[ng-repeat="item in feed.items"]').find('.providerHack').text();
+        var eBookTracker = document.createElement('img');
+        eBookTracker.src = '//labs.library.gvsu.edu/labs/ebooks/?source=summon&prov=' + encodeURIComponent(eBookProvider.trim());
+        document.body.appendChild(eBookTracker);
+      });
+
+    }
+
+    function getParameterByName(name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+            results = regex.exec(openURL);
+        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+
+  });
+
   }, 6000);
       
 
