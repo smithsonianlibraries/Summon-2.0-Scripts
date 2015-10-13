@@ -55,11 +55,7 @@ $(document).ready(function() {
     $('form.flowLogin').find('input[type="submit"]').attr('title', 'Save and organize citations to make research and writing easier.').val('Log in to ProQuest Flow');
     console.log('Changed the label and title for the ProQuest Flow log in link.');
 
-    // Fix the two request buttons on the book detail page
-    $("a.btn[href*='illiad']").text('Request from another library');
-    $('.documentActions').find("a.btn[href*='gvsu.summon']").text('Request GVSU Copy').css('background','#069').css('color','#fff');
-    console.log('Fixed the duplicate request button issue on book detail pane.');
-
+    
     // Overwrite any mention of Zumberge Library because we moved out of there 2 years ago and 
     // what are you guys even doing over there at ProQuest I can't even
     $('li[row-value="document.libraries"]').find('span[ng-class="valueClass"]:contains("Zumberge")').text('Mary Idema Pew Library');
