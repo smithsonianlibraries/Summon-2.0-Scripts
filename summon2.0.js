@@ -113,11 +113,6 @@ $(document).ready(function() {
 
   }, 6000);
 
-  // Change the labels on the details pane
-  setTimeout(function() {
-    $('.detailPage').find('.documentActions').find("a.btn[href*='illiad']").css('display','block').text('Request from another library');
-    $('.detailPage').find('.documentActions').find("a.btn[href*='gvsu.summon']").text('Request GVSU Copy').css('background','#069').css('color','#fff');
-  }, 1000);
   
   	//Track what type of content user actually click on (with GA)
   	$('div.inner').on('click','a[ng-class="linkClass"] , a.availabilityLink', function() {

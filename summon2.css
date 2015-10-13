@@ -78,14 +78,20 @@ holdingsOnly label,
 }
 
 /* Nobody wants to see 2 identical request buttons */
-/*
 
-FIXING THIS IN JS FOR NOW
-
-.documentActionsContainer .documentActions a.btn.secondary:nth-child(2) {
-  display: none;
+.documentActions a[href^="http://gvsu.summon"] {
+    background: #069 !important;
+    color: white !important;
 }
-*/
+
+.documentActions a[href^="http://gvsu.summon"]:after {
+    content: " GVSU Copy";
+}
+
+.documentActions a[href*="illiad"]:after {
+    content: " from Another Library";
+}
+
 
 @media screen and (min-width:701px) and (max-width:1024px) {
 	#main .inner {
