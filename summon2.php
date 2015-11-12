@@ -1,7 +1,6 @@
 <?php
-header("Access-Control-Allow-Origin: *");
-//header("Access-Control-Allow-Origin: https://gvsu.summon.serialssolutions.com");
-//header("Access-Control-Allow-Origin: http://gvsu.summon.serialssolutions.com");
+header("Access-Control-Allow-Origin: https://gvsu.summon.serialssolutions.com");
+header("Access-Control-Allow-Origin: http://gvsu.summon.serialssolutions.com");
 
 // File that defines database connection parameters
 include('config.sample.php');
