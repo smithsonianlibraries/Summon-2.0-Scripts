@@ -3,7 +3,7 @@ header("Access-Control-Allow-Origin: https://gvsu.summon.serialssolutions.com");
 header("Access-Control-Allow-Origin: http://gvsu.summon.serialssolutions.com");
 
 // File that defines database connection parameters
-include('config.sample.php');
+include('config.php');
 
 $db = new mysqli($db_host, $db_user, $db_pass, $db_database);
 if ($db->connect_errno) {
