@@ -98,6 +98,24 @@ $(document).ready(function() {
 
     }
 
+    // Record accurate Search usage
+    var searchQuery = encodeURIComponent($('#searchBox_01P').val());
+
+    var searchRequest = $.ajax({
+      url: "https://gvsuliblabs.com/labs/summon2.0/write.php",
+      method: "POST",
+      data: { search : searchQuery }
+    });
+     
+    searchRequest.done(function( msg ) {
+      console.log('Saved search query: ' + msg);
+    });
+     
+    searchRequest.fail(function( jqXHR, textStatus ) {
+      alert( "Request failed: " + textStatus );
+    });
+        
+
     function getParameterByName(name) {
         name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
         var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
