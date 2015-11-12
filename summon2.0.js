@@ -102,7 +102,7 @@ $(document).ready(function() {
     var searchQuery = encodeURIComponent($('#searchBox_01P').val());
 
     var searchRequest = $.ajax({
-      url: "https://gvsuliblabs.com/labs/summon2.0/write.php",
+      url: "https://gvsuliblabs.com/labs/summon2.0/summon2.php",
       method: "POST",
       data: { search : searchQuery }
     });
