@@ -77,6 +77,7 @@ $(document).ready(function() {
     }
 
     console.log(searchQuery);
+    
     var topicTitle, topicFrom, topicSummary, hasTopic = false;
 
     // Check to see if there is a Topic Explorer entry
