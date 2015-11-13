@@ -77,7 +77,7 @@ $(document).ready(function() {
     }
 
     console.log(searchQuery);
-    
+
     var topicTitle, topicFrom, topicSummary, hasTopic = false;
 
     // Check to see if there is a Topic Explorer entry
@@ -93,10 +93,13 @@ $(document).ready(function() {
 
     if(typeof searchQuery !== 'undefined') {
 
+      var searchData = '{ search : ' + searchQuery + ', topic: ' + hasTopic + ', title: ' + topicTitle + ', from: ' + topicFrom + ', summary: ' + topicSummary + '}';
+      console.log(searchData);
+
       var searchRequest = $.ajax({
         url: "https://gvsuliblabs.com/labs/summon2.0/summon2.php",
         method: "POST",
-        data: { search : searchQuery, topic: hasTopic, title: topicTitle, from: topicFrom, summary: topicSummary }
+        data: searchData
       });
        
       searchRequest.done(function( msg ) {
