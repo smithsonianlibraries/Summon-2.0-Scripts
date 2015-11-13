@@ -71,13 +71,24 @@ $(document).ready(function() {
 
     // Record accurate Search usage
     var searchQuery = libGetQueryVariable('s.q', window.location.search);
+    var topicTitle, topicFrom, topicSummary, hasTopic = false;
+
+    // Check to see if there is a Topic Explorer entry
+    if($('[aria-summary="Topic Summary"]').length > 0) {
+
+      hasTopic = true;
+      topicTitle = $('div.rightBar[aria-label="Topic Summary"]').find('h1:first').text();
+      topicFrom = $('div.rightBar[aria-label="Topic Summary"]').find('div.from.ng-binding').text();
+      topicFrom = $('div.rightBar[aria-label="Topic Summary"]').find('div.snippet.hidden-phone.ng-binding').text();
+
+    }
 
     if(typeof searchQuery !== 'undefined') {
 
       var searchRequest = $.ajax({
         url: "https://gvsuliblabs.com/labs/summon2.0/summon2.php",
         method: "POST",
-        data: { search : searchQuery }
+        data: { search : searchQuery, topic: hasTopic, title: topicTitle, from: topicFrom, summary: topicSummary }
       });
        
       searchRequest.done(function( msg ) {

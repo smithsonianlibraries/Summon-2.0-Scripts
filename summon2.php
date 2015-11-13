@@ -98,6 +98,19 @@ function db_insert($search, $hash){
 			$db->query("INSERT INTO matches (id, hash, timestamp) 
   						VALUES(LAST_INSERT_ID(),'$hash','$now')") or die($db->error);
 
+			// Check for Topic Explorer mapping
+
+			if(isset($_REQUEST['topic']) && ($_REQUEST['topic'] == true)) { // Save topic explorer data
+
+				// Watch out for naughty bits
+				$topic = $db->real_escape_string($_REQUEST['title']);
+				$topicFrom = $db->real_escape_string($_REQUEST['from']);
+				$topicSummary = $db->real_escape_string($_REQUEST['summary']);
+
+				$db->query("INSERT INTO topics (id, title, from, summary) VALUES (LAST_INSERT_ID, '$topic', '$topicFrom', '$topicSummary')") or die($db->error);
+
+			}
+
 			echo 'Search saved.';
 
 		}	
