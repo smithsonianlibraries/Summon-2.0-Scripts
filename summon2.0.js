@@ -88,7 +88,7 @@ $(document).ready(function() {
       topicFrom = $('div.rightBar[aria-label="Topic Summary"]').find('div.from.ng-binding').text();
       topicFrom = $('div.rightBar[aria-label="Topic Summary"]').find('div.snippet.hidden-phone.ng-binding').text();
 
-      console.log('This search has a Topic Explorer entry of ' + topicTitle);
+      console.log('This search has a Topic Explorer entry of ' + topicTitle + ' from ' + topicFrom);
     }
 
     if(typeof searchQuery !== 'undefined') {
@@ -96,7 +96,7 @@ $(document).ready(function() {
       var searchRequest = $.ajax({
         url: "https://gvsuliblabs.com/labs/summon2.0/summon2.php",
         method: "POST",
-        data: { search : searchQuery, topic: hasTopic, title: topicTitle, from: topicFrom, summary: topicSummary }
+        data: { search : searchQuery, topic: hasTopic, title: topicTitle, source: topicFrom, summary: topicSummary }
       });
        
       searchRequest.done(function( msg ) {
