@@ -100,8 +100,6 @@ function db_insert($search, $hash){
 
 			// Check for Topic Explorer mapping
 
-			echo $_REQUEST['topic'];
-
 			if(isset($_REQUEST['topic']) && ($_REQUEST['topic'] == true)) { // Save topic explorer data
 
 				// Watch out for naughty bits
