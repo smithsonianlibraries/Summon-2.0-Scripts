@@ -69,44 +69,7 @@ $(document).ready(function() {
       console.log('Removed silly text in book availability statement');
     });
 
-    // Record accurate Search usage
-   var searchQuery = libGetQueryVariable('s.q', window.location.search);
-
-    if((typeof searchQuery === 'undefined') || (searchQuery == null)) {
-          searchQuery = libGetQueryVariable('q', window.location.href);
-    }
-
-    console.log(searchQuery);
-
-    var topicTitle, topicFrom, topicSummary, hasTopic = false;
-
-    // Check to see if there is a Topic Explorer entry
-    if($('[aria-label="Topic Summary"]').length > 0) {
-
-      hasTopic = true;
-      topicTitle = $('div.rightBar[aria-label="Topic Summary"]').find('h1:first').text();
-      topicFrom = $('div.rightBar[aria-label="Topic Summary"]').find('div.from.ng-binding').text();
-      topicSummary = $('div.rightBar[aria-label="Topic Summary"]').find('div.snippet.hidden-phone.ng-binding').text();
-
-      console.log('This search has a Topic Explorer entry of ' + topicTitle + ' from ' + topicFrom);
-    }
-
-    if(typeof searchQuery !== 'undefined') {
-
-      var searchRequest = $.ajax({
-        url: "https://gvsuliblabs.com/labs/summon2.0/summon2.php",
-        method: "POST",
-        data: { search : searchQuery, topic: hasTopic, title: topicTitle, source: topicFrom, summary: topicSummary }
-      });
-       
-      searchRequest.done(function( msg ) {
-        console.log('Saved search query: ' + msg);
-      });
-       
-      searchRequest.fail(function( jqXHR, textStatus ) {
-        console.log( "Request failed: " + textStatus );
-      });
-    }
+   recordSearch();
 
     // Record eBook referrers
   $('div#results ul.list-unstyled > li[ng-repeat="item in feed.items"]').each(function() { 
@@ -239,6 +202,47 @@ $(document).ready(function() {
   	var date = new Date();
   	var time = date.toLocaleTimeString();
   	console.log(message+' ['+time+']');
+  }
+
+  function recordSearch() {
+     // Record accurate Search usage
+   var searchQuery = libGetQueryVariable('s.q', window.location.search);
+
+    if((typeof searchQuery === 'undefined') || (searchQuery == null)) {
+          searchQuery = libGetQueryVariable('q', window.location.href);
+    }
+
+    console.log(searchQuery);
+
+    var topicTitle, topicFrom, topicSummary, hasTopic = false;
+
+    // Check to see if there is a Topic Explorer entry
+    if($('[aria-label="Topic Summary"]').length > 0) {
+
+      hasTopic = true;
+      topicTitle = $('div.rightBar[aria-label="Topic Summary"]').find('h1:first').text();
+      topicFrom = $('div.rightBar[aria-label="Topic Summary"]').find('div.from.ng-binding').text();
+      topicSummary = $('div.rightBar[aria-label="Topic Summary"]').find('div.snippet.hidden-phone.ng-binding').text();
+
+      console.log('This search has a Topic Explorer entry of ' + topicTitle + ' from ' + topicFrom);
+    }
+
+    if(typeof searchQuery !== 'undefined') {
+
+      var searchRequest = $.ajax({
+        url: "https://gvsuliblabs.com/labs/summon2.0/summon2.php",
+        method: "POST",
+        data: { search : searchQuery, topic: hasTopic, title: topicTitle, source: topicFrom, summary: topicSummary }
+      });
+       
+      searchRequest.done(function( msg ) {
+        console.log('Saved search query: ' + msg);
+      });
+       
+      searchRequest.fail(function( jqXHR, textStatus ) {
+        console.log( "Request failed: " + textStatus );
+      });
+    }
   }
 
   function logClickGA( eventName, eventValue ) {
