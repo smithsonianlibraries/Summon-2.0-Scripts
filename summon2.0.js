@@ -81,7 +81,7 @@ $(document).ready(function() {
     var topicTitle, topicFrom, topicSummary, hasTopic = false;
 
     // Check to see if there is a Topic Explorer entry
-    if($('[aria-summary="Topic Summary"]').length > 0) {
+    if($('[aria-label="Topic Summary"]').length > 0) {
 
       hasTopic = true;
       topicTitle = $('div.rightBar[aria-label="Topic Summary"]').find('h1:first').text();
