@@ -98,8 +98,10 @@ function db_insert($search, $hash){
 			$db->query("INSERT INTO searches (instances, search_query)
   						VALUES('1', '$search')") or die($db->error);
 
+			$new_id = $db->insert_id;
+
 			$db->query("INSERT INTO matches (id, hash, timestamp) 
-  						VALUES(LAST_INSERT_ID(),'$hash','$now')") or die($db->error);
+  						VALUES('$new_id','$hash','$now')") or die($db->error);
 
 			// Check for Topic Explorer mapping
 
@@ -110,7 +112,7 @@ function db_insert($search, $hash){
 				$topicFrom = $db->real_escape_string($_REQUEST['from']);
 				$topicSummary = $db->real_escape_string($_REQUEST['summary']);
 
-				$db->query("INSERT INTO topics (id, title, from, summary) VALUES (LAST_INSERT_ID(), '$topic', '$topicFrom', '$topicSummary')") or die($db->error);
+				$db->query("INSERT INTO topics (id, title, source, summary) VALUES ('$new_id', '$topic', '$topicFrom', '$topicSummary')") or die($db->error);
 
 			}
 
