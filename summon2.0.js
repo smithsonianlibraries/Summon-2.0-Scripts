@@ -100,6 +100,19 @@ $(document).ready(function() {
 
     }   
 
+      // Watch the search results for changes, record new searches
+
+    var libMyScope = angular.element('html').scope();
+
+  // WATCH FOR RESULTS FEED CHANGES...
+    libMyScope.$watchCollection('feed', function(){
+      // give AngularJS time to update the DOM
+      setTimeout(function() { 
+        recordSearch();
+      }, 5000);
+      console.log('Scope.feed changed! - loading finished');
+  });
+
     function getParameterByName(name) {
         name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
         var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
@@ -154,20 +167,6 @@ $(document).ready(function() {
      });
   }
   */
-
-  // Watch the search results for changes, record new searches
-
-  var libMyScope = angular.element('html').scope();
-
-// WATCH FOR RESULTS FEED CHANGES...
-  libMyScope.$watchCollection('feed', function(){
-    // give AngularJS time to update the DOM
-    setTimeout(function() { 
-      recordSearch();
-    }, 5000);
-    console.log('Scope.feed changed! - loading finished');
-  });
-
 
 
   // Extract a bib Number from a Summon docID (thanks, Dave Pattern!)
