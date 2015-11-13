@@ -93,13 +93,10 @@ $(document).ready(function() {
 
     if(typeof searchQuery !== 'undefined') {
 
-      var searchData = '{ search : ' + searchQuery + ', topic: ' + hasTopic + ', title: ' + topicTitle + ', from: ' + topicFrom + ', summary: ' + topicSummary + '}';
-      console.log(searchData);
-
       var searchRequest = $.ajax({
         url: "https://gvsuliblabs.com/labs/summon2.0/summon2.php",
         method: "POST",
-        data: searchData
+        data: { search : searchQuery, topic: hasTopic, title: topicTitle, from: topicFrom, summary: topicSummary }
       });
        
       searchRequest.done(function( msg ) {

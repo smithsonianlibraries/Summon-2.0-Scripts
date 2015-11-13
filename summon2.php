@@ -47,7 +47,7 @@ if(isset($_REQUEST['search']) && $_REQUEST['search'] != "") { // Search term is 
 
 } else {
 	
-	echo 'No data';
+	echo 'No data ' . $_REQUEST;
 }
 
 function db_insert($search, $hash){
