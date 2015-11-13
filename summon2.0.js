@@ -71,6 +71,7 @@ $(document).ready(function() {
 
     // Record accurate Search usage
     var searchQuery = libGetQueryVariable('s.q', window.location.search);
+    console.log(searchQuery);
     var topicTitle, topicFrom, topicSummary, hasTopic = false;
 
     // Check to see if there is a Topic Explorer entry
@@ -81,6 +82,7 @@ $(document).ready(function() {
       topicFrom = $('div.rightBar[aria-label="Topic Summary"]').find('div.from.ng-binding').text();
       topicFrom = $('div.rightBar[aria-label="Topic Summary"]').find('div.snippet.hidden-phone.ng-binding').text();
 
+      console.log('This search has a Topic Explorer entry of ' + topicTitle);
     }
 
     if(typeof searchQuery !== 'undefined') {
