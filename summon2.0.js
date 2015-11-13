@@ -86,7 +86,7 @@ $(document).ready(function() {
       hasTopic = true;
       topicTitle = $('div.rightBar[aria-label="Topic Summary"]').find('h1:first').text();
       topicFrom = $('div.rightBar[aria-label="Topic Summary"]').find('div.from.ng-binding').text();
-      topicFrom = $('div.rightBar[aria-label="Topic Summary"]').find('div.snippet.hidden-phone.ng-binding').text();
+      topicSummary = $('div.rightBar[aria-label="Topic Summary"]').find('div.snippet.hidden-phone.ng-binding').text();
 
       console.log('This search has a Topic Explorer entry of ' + topicTitle + ' from ' + topicFrom);
     }
