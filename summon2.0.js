@@ -71,6 +71,11 @@ $(document).ready(function() {
 
     // Record accurate Search usage
     var searchQuery = libGetQueryVariable('s.q', window.location.search);
+
+    if(typeof searchQuery === 'undefined' || searchQuery = null) {
+          var searchQuery = libGetQueryVariable('q', window.location.search);
+    }
+
     console.log(searchQuery);
     var topicTitle, topicFrom, topicSummary, hasTopic = false;
 
