@@ -99,7 +99,7 @@ $(document).ready(function() {
     }
 
     // Record accurate Search usage
-    var searchQuery = encodeURIComponent($('#searchBox_01P').val());
+    var searchQuery = encodeURIComponent(libGetQueryVariable('s.q', window.location.search));
 
     if(typeof searchQuery !== 'undefined') {
 
