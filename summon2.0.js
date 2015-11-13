@@ -70,10 +70,10 @@ $(document).ready(function() {
     });
 
     // Record accurate Search usage
-    var searchQuery = libGetQueryVariable('s.q', window.location.search);
+   var searchQuery = libGetQueryVariable('s.q', window.location.search);
 
-    if(typeof searchQuery === 'undefined' || searchQuery = null) {
-          var searchQuery = libGetQueryVariable('q', window.location.search);
+    if((typeof searchQuery === 'undefined') || (searchQuery == null)) {
+          searchQuery = libGetQueryVariable('q', window.location.href);
     }
 
     console.log(searchQuery);
