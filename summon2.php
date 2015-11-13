@@ -45,6 +45,9 @@ if(isset($_REQUEST['search']) && $_REQUEST['search'] != "") { // Search term is 
 
 	db_insert($search_term, $unique_hash);
 
+} else {
+	
+	echo 'No data';
 }
 
 function db_insert($search, $hash){
@@ -115,8 +118,6 @@ function db_insert($search, $hash){
 
 		}	
 	}
-} else {
-	echo 'No data';
-}
+} 
 
 ?>
