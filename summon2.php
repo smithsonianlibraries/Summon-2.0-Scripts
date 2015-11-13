@@ -107,7 +107,7 @@ function db_insert($search, $hash){
 				$topicFrom = $db->real_escape_string($_REQUEST['from']);
 				$topicSummary = $db->real_escape_string($_REQUEST['summary']);
 
-				$db->query("INSERT INTO topics (id, title, from, summary) VALUES (LAST_INSERT_ID, '$topic', '$topicFrom', '$topicSummary')") or die($db->error);
+				$db->query("INSERT INTO topics (id, title, from, summary) VALUES (LAST_INSERT_ID(), '$topic', '$topicFrom', '$topicSummary')") or die($db->error);
 
 			}
 
