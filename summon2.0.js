@@ -69,6 +69,26 @@ $(document).ready(function() {
       console.log('Removed silly text in book availability statement');
     });
 
+    // Record accurate Search usage
+    var searchQuery = encodeURIComponent(libGetQueryVariable('s.q', window.location.search));
+
+    if(typeof searchQuery !== 'undefined') {
+
+      var searchRequest = $.ajax({
+        url: "https://gvsuliblabs.com/labs/summon2.0/summon2.php",
+        method: "POST",
+        data: { search : searchQuery }
+      });
+       
+      searchRequest.done(function( msg ) {
+        console.log('Saved search query: ' + msg);
+      });
+       
+      searchRequest.fail(function( jqXHR, textStatus ) {
+        console.log( "Request failed: " + textStatus );
+      });
+    }
+
     // Record eBook referrers
   $('div#results ul.list-unstyled > li[ng-repeat="item in feed.items"]').each(function() { 
     var result = $(this);
@@ -96,28 +116,7 @@ $(document).ready(function() {
         document.body.appendChild(eBookTracker);
       });
 
-    }
-
-    // Record accurate Search usage
-    var searchQuery = encodeURIComponent(libGetQueryVariable('s.q', window.location.search));
-
-    if(typeof searchQuery !== 'undefined') {
-
-      var searchRequest = $.ajax({
-        url: "https://gvsuliblabs.com/labs/summon2.0/summon2.php",
-        method: "POST",
-        data: { search : searchQuery }
-      });
-       
-      searchRequest.done(function( msg ) {
-        console.log('Saved search query: ' + msg);
-      });
-       
-      searchRequest.fail(function( jqXHR, textStatus ) {
-        console.log( "Request failed: " + textStatus );
-      });
-    }
-        
+    }   
 
     function getParameterByName(name) {
         name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
