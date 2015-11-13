@@ -115,6 +115,8 @@ function db_insert($search, $hash){
 
 		}	
 	}
+} else {
+	echo 'No data';
 }
 
 ?>
