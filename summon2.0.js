@@ -70,7 +70,7 @@ $(document).ready(function() {
     });
 
     // Record accurate Search usage
-    var searchQuery = encodeURIComponent(libGetQueryVariable('s.q', window.location.search));
+    var searchQuery = libGetQueryVariable('s.q', window.location.search);
 
     if(typeof searchQuery !== 'undefined') {
 
