@@ -120,7 +120,7 @@ if($search_results) {
 			echo '<td>' . $row['summary'] . '</td>';
 			echo '<td>' . $row['instances'] . '</td>';
 		echo '</tr>';
-
+		$i++;
 	}
 }
 
