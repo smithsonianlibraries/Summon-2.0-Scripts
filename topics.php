@@ -130,7 +130,25 @@ if($search_results) {
 </table>
 
 
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
 
+$('tr').click(function() {
+
+	// Get id
+	var rowID = $(this).attr('id');
+	console.log(rowID);
+
+	// Remove previous highlight classes
+	$('tr').removeClass('selected');
+
+	$(this).addClass('selected');
+
+	window.location.hash = rowID;
+
+});
+
+</script>
 
 
 </body>
