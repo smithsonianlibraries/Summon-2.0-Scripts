@@ -113,7 +113,7 @@ $i = 1;
 
 if($search_results) {
 	while($row = $search_results->fetch_assoc()) {
-		echo '<tr>';
+		echo '<tr id="' . $i . '">';
 			echo '<td>' . $i . '</td>';
 			echo '<td>' . $row['search_query'] . '</td>';
 			echo '<td>' . $row['title'] . '</td>';
