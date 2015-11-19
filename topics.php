@@ -44,6 +44,10 @@ td, th {
 } 
 
 .selected {
+	background-color: #c09853 !important;
+}
+
+tr.link-hover:hover {
 	background-color: #fcf8e3 !important;
 }
 
