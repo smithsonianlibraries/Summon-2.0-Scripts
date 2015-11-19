@@ -44,7 +44,7 @@ td, th {
 } 
 
 .selected {
-	background-color: #fcf8e3;
+	background-color: #fcf8e3 !important;
 }
 
 @media 
@@ -136,6 +136,8 @@ if($search_results) {
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script>
+
+$('tr').css('cursor', 'pointer');
 
 $('tr').click(function() {
 
