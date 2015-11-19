@@ -47,6 +47,15 @@ td, th {
 	background-color: #fcf8e3 !important;
 }
 
+tr.link-hover:hover {
+
+background-image: url(link.png);
+background-repeat: no-repeat;
+background-position: right;
+
+}
+
+
 @media 
 only screen and (max-width: 760px),
 (min-device-width: 768px) and (max-device-width: 1024px)  {
@@ -138,6 +147,7 @@ if($search_results) {
 <script>
 
 $('tr').css('cursor', 'pointer');
+$('tr').addClass('link-hover');
 
 $('tr').click(function() {
 
