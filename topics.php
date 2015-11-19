@@ -13,7 +13,8 @@ if ($db->connect_errno) {
 
 $search_results = $db->query("SELECT t.id, t.source, t.summary, t.title, s.search_query, s.instances
 							FROM topics as t, searches as s
-							WHERE s.id = t.id") or die($db->error);
+							WHERE s.id = t.id
+							GROUP BY t.id") or die($db->error);
 
 ?>
 <!DOCTYPE html>
@@ -78,11 +79,12 @@ only screen and (max-width: 760px),
 		white-space: nowrap;
 	}
 	
-	
-	td:nth-of-type(1):before { content: "Search"; }
-	td:nth-of-type(2):before { content: "Topic"; }
-	td:nth-of-type(3):before { content: "Source"; }
-	td:nth-of-type(4):before { content: "Summary"; }
+	td:nth-of-type(1):before { content: "Row"; }
+	td:nth-of-type(2):before { content: "Search"; }
+	td:nth-of-type(3):before { content: "Topic"; }
+	td:nth-of-type(4):before { content: "Source"; }
+	td:nth-of-type(5):before { content: "Summary"; }
+	td:nth-of-type(6):before { content: "Instances"; }
 	
 }
 
@@ -94,23 +96,29 @@ only screen and (max-width: 760px),
 <table>
 	<thead>
 	  <tr>
+	  	<th>Row Number</th>
 		<th>Search Query</th>
 		<th>Topic Title</th>
 		<th>Topic Source</th>
 		<th>Topic Summary</th>
+		<th>Instances</th>
 	  </tr>
 	</thead>
 	<tbody>
 
 <?php 
 
+$i = 1;
+
 if($search_results) {
 	while($row = $search_results->fetch_assoc()) {
 		echo '<tr>';
+			echo '<td>' . $i . '</td>';
 			echo '<td>' . $row['search_query'] . '</td>';
 			echo '<td>' . $row['title'] . '</td>';
 			echo '<td>' . $row['source'] . '</td>';
 			echo '<td>' . $row['summary'] . '</td>';
+			echo '<td>' . $row['instances'] . '</td>';
 		echo '</tr>';
 
 	}
