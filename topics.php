@@ -47,11 +47,11 @@ td, th {
 	background-color: #fcf8e3 !important;
 }
 
-tr.link-hover:hover {
+tr.link-hover:hover td:nth-child(1) {
 
 background-image: url(link.png);
 background-repeat: no-repeat;
-background-position: right;
+background-position: 75%;
 
 }
 
