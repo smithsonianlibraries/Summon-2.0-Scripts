@@ -14,7 +14,7 @@ if ($db->connect_errno) {
 $search_results = $db->query("SELECT t.id, t.source, t.summary, t.title, s.search_query, s.instances
 							FROM topics as t, searches as s
 							WHERE s.id = t.id
-							GROUP BY t.id") or die($db->error);
+							GROUP BY s.searfch_query") or die($db->error);
 
 ?>
 <!DOCTYPE html>
