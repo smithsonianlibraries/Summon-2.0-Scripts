@@ -40,7 +40,7 @@ td, th {
   padding: 6px; 
   border: 1px solid #ccc; 
   text-align: left; 
-}
+} 
 
 @media 
 only screen and (max-width: 760px),
