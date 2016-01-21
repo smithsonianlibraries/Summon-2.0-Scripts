@@ -52,8 +52,8 @@ $(document).ready(function() {
 
     // Proquest has 2 links both labeled "Log in" that go to different places
     // because they cannot do Internet. Fix that
-    $('form.flowLogin').find('input[type="submit"]').attr('title', 'Save and organize citations to make research and writing easier.').val('Log in to ProQuest Flow');
-    console.log('Changed the label and title for the ProQuest Flow log in link.');
+    $('form.flowLogin').find('input[type="submit"]').attr('title', 'Save and organize citations to make research and writing easier.');
+    console.log('Changed the title for the RefWorks log in link.');
 
     
     // Overwrite any mention of Zumberge Library because we moved out of there 2 years ago and 
