@@ -125,3 +125,7 @@ holdingsOnly label,
 	right: 0;
 }
 }
+
+.topicSummary {
+    padding-top: 2em;
+}
