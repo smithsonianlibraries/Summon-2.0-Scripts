@@ -13,11 +13,6 @@ $(document).ready(function() {
 
     
   setTimeout(function() {
-   /* $(".savedItemsFolderContainer").append('<div id="libchat_6290b3d40228a9e708fa7066d01f56bf"></div>');
-    var chatScript = document.createElement('script');
-	  chatScript.type = 'text/javascript';
-	  chatScript.src = '//v2.libanswers.com/load_chat.php?hash=6290b3d40228a9e708fa7066d01f56bf';
-	  document.body.appendChild(chatScript); */
 
     var li = document.createElement('div');
     li.id = 'library-chat';
@@ -53,7 +48,7 @@ $(document).ready(function() {
     // Proquest has 2 links both labeled "Log in" that go to different places
     // because they cannot do Internet. Fix that
     $('form.flowLogin').find('input[type="submit"]').attr('title', 'Save and organize citations to make research and writing easier.');
-    console.log('Changed the title for the RefWorks log in link.');
+    console.log('Changed the title attribute for the RefWorks log in link.');
 
     
     // Overwrite any mention of Zumberge Library because we moved out of there 2 years ago and 
@@ -70,56 +65,6 @@ $(document).ready(function() {
     });
 
    recordSearch();
-
-    // Record eBook referrers
-  $('div#results ul.list-unstyled > li[ng-repeat="item in feed.items"]').each(function() { 
-    var result = $(this);
-    var format = $(this).find('div.contentType').find('span:nth-child(2)').text();
-
-    if(format == 'eBook') {
-      //console.log(format);
-      var openURL = $(result).find('span.Z3988').attr('title');
-      var opacNo = getParameterByName('rft.externalDocID');
-      opacNo = opacNo.slice(0, - 1);
-      console.log(opacNo);
-
-      // Now load the part of the catalog record that has the 856 link
-      var recordChunk = document.createElement('div');
-      recordChunk.className = 'providerHack';
-      recordChunk.style.display = 'none';
-      $(result).append(recordChunk);
-      $(result).find('.providerHack').load('http://gvsuliblabs.com/labs/ebooks/summonHelper.php?record='+opacNo);
-      console.log(opacNo);
-
-      $(result).find('a[role="link"]').click(function() {
-        var eBookProvider = $(this).closest('li[ng-repeat="item in feed.items"]').find('.providerHack').text();
-        var eBookTracker = document.createElement('img');
-        eBookTracker.src = '//labs.library.gvsu.edu/labs/ebooks/?source=summon&prov=' + encodeURIComponent(eBookProvider.trim());
-        document.body.appendChild(eBookTracker);
-      });
-
-    }   
-
-      // Watch the search results for changes, record new searches
-    var libMyScope = angular.element('html').scope();
-
-  // WATCH FOR RESULTS FEED CHANGES...
-    libMyScope.$watchCollection('feed', function(){
-      // give AngularJS time to update the DOM
-      setTimeout(function() { 
-        recordSearch(); 
-      }, 5000);
-      console.log('Scope.feed changed! - loading finished');
-    });
-
-    function getParameterByName(name) {
-        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-            results = regex.exec(openURL);
-        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-    }
-
-  });
 
   }, 6000);
 
@@ -144,28 +89,6 @@ $(document).ready(function() {
   	});
 
   	$('.advancedBtn').click(function() { logClickGA('clickOnInterface','Advanced Search'); });
-
-/*
-  // If this is a book detail page, update the Request button to either
-  // request the book from the shelf or from the ASRS
-
-  if( libCurrentURL.indexOf("gvsu_catalog") > 0 ) {
-    		record = libGetQueryVariable('id',libCurrentURL);
-        libDetailPageId = libGetBibID(record);
-        libLog(libDetailPageId);
-
-      $.ajax({
-        type: "GET", //Change to whatever method type you are using on your page
-        url: cssPath + "summon2.php",
-        data: { record: libDetailPageId }
-     }).done(function(result) {
-        newHref = result;
-        $("a.secondary.btn.ng-binding").attr('href',newHref);
-
-        //alert(newHref);
-     });
-  }
-  */
 
 
   // Extract a bib Number from a Summon docID (thanks, Dave Pattern!)
