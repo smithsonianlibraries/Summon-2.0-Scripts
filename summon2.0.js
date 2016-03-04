@@ -166,8 +166,51 @@ $(document).ready(function() {
       topicSummary = $('div.rightBar[aria-label="Topic Summary"]').find('div.snippet.hidden-phone.ng-binding').text();
 
       console.log('This search has a Topic Explorer entry of ' + topicTitle + ' from ' + topicFrom);
-    }
 
+      // Append an error reporting link and about link to the Topic Explorer
+
+      var thisUrl = encodeURIComponent(window.location);
+
+      var topicExplorerButton = '<p class="gvsu-te-help" style="margin:.75em 0; border-bottom: 1px solid #999; padding: .75em 0;"><a href="http://labs.library.gvsu.edu/status/?problem&url=' + thisUrl + '" class="te_problem">Report a Problem with this Result</a><a style="float:right;display: inline-block; margin-left: 1em;" href="#" id="te-why">Why is this here?</a></p>';
+      
+      $('div.rightBar[aria-label="Topic Summary"]').find('.sourceLink.customPrimaryLink').addClass('btn').css('margin-top','.75em').addClass('btn-default').parent('div').append(topicExplorerButton);
+
+       $('.te_problem').click(function(e) {
+         e.preventDefault();
+
+        var problemMessage = 'Search: ' + searchQuery + "\n\r" + 'Topic: ' + topicTitle + "\n\r" + 'Source: ' + topicFrom +  "\n" + 'Summary: ' + topicSummary;
+        console.log(problemMessage);
+       
+        var teProblem = $.ajax({
+        url: "https://gvsuliblabs.com/labs/te/index.php",
+        method: "POST",
+        data: { feedback : problemMessage, url: thisUrl }
+      });
+       
+      teProblem.done(function( msg ) {
+        console.log('Saved search query: ' + msg);
+        $('.te_problem').css('color', 'green').removeClass('te_problem').html(msg);
+      });
+       
+      teProblem.fail(function( jqXHR, textStatus ) {
+        console.log( "Request failed: " + textStatus );
+      });
+      
+        });
+
+      $('#te-why').click(function(e) {
+
+        e.preventDefault();
+
+        // Insert a modal dialog box to direct users to Document Delivery
+        $("body").append('<div class="overlay"><div class="modal-box"><h4 style="text-align:center;margin-bottom: 1em;">What is this?</h4><p>This library search attempts to match your search terms with reference material related to the topic you are interested in. This process is automated but isn&#8217;t always perfect. At times, words in your search or synonyms might cause unrelated topics to appear here. If that&#8217;s the case, you can always <a href="http://labs.library.gvsu.edu/status/?problem&url=' + thisUrl + '">let us know there is a problem</a>. We work closely with the team that built this search tool to improve these results.</p><div class="close-button">[x]</div></div></div>');
+
+        $(".close-button").click(function() {
+          $(".overlay").hide();
+        });
+    
+    });
+}
     if(typeof searchQuery !== 'undefined') {
 
       var searchRequest = $.ajax({
@@ -184,10 +227,12 @@ $(document).ready(function() {
         console.log( "Request failed: " + textStatus );
       });
     }
-  }
+}
 
   function logClickGA( eventName, eventValue ) {
   //	libLog(eventName+'='+eventValue);
   	_gaq.push(['_trackEvent', 'gvsuCustomClick', eventName, eventValue]);
   }
+
+
 });
