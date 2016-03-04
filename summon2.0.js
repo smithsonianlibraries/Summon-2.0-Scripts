@@ -203,7 +203,7 @@ $(document).ready(function() {
         e.preventDefault();
 
         // Insert a modal dialog box to direct users to Document Delivery
-        $("body").append('<div class="overlay"><div class="modal-box"><h4 style="text-align:center;margin-bottom: 1em;">What is this?</h4><p>This library search attempts to match your search terms with reference material related to the topic you are interested in. This process is automated but isn&#8217;t always perfect. At times, words in your search or synonyms might cause unrelated topics to appear here. If that&#8217;s the case, you can always <a href="http://labs.library.gvsu.edu/status/?problem&url=' + thisUrl + '">let us know there is a problem</a>. We work closely with the team that built this search tool to improve these results.</p><div class="close-button">[x]</div></div></div>');
+        $("body").append('<div class="overlay"><div class="modal-box"><h4 style="text-align:center;margin-bottom: 1em;">What is this?</h4><p>This library search attempts to match your search terms with reference material related to the topic you are interested in.</p><p>This process is automated but isn&#8217;t always perfect. At times, words in your search or synonyms might cause unrelated topics to appear here.</p><p>If that&#8217;s the case, you can always <a href="http://labs.library.gvsu.edu/status/?problem&url=' + thisUrl + '">let us know there is a problem</a>. We work closely with the team that built this search tool to improve these results.</p><div class="close-button">[x]</div></div></div>');
 
         $(".close-button").click(function() {
           $(".overlay").hide();
