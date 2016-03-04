@@ -7,7 +7,7 @@ $(document).ready(function() {
 
   var cssPath = '//gvsuliblabs.com/labs/summon2.0/',libDetailPageId, newHref, libCurrentURL, record, recordParts, thisID,libCurrentURL = window.location.hash.substring(1);
   // Add custom styles
-  $('head').append('<link rel="stylesheet" type="text/css" href="' + cssPath + 'summon2.css" />');
+  $('head').append('<link rel="stylesheet" type="text/css" href="' + cssPath + 'summon2.css?date=20160304" />');
   console.log('Added custom stylesheet.');
 
 
@@ -196,7 +196,7 @@ $(document).ready(function() {
         console.log( "Request failed: " + textStatus );
       });
       
-        });
+    });
 
       $('#te-why').click(function(e) {
 
