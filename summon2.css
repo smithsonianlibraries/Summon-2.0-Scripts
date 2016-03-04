@@ -72,7 +72,7 @@ holdingsOnly label,
 
 #library-chat a { 
     padding: .5em 1em .5em 3em !important;
-    background-image: url(//gvsu.edu/cms3/assets/741ECAAE-BD54-A816-71DAF591D1D7955C/chat-online.png) !important;
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAA8klEQVQ4y2NgoAWIPhHNl3I6xSH1TGoRkK5KPpXskXgoUZQYvYxATRmpp1M/pZ1J+4+Gf6WeSm323ObJjlNz2um0TVg0omCgBRdjd8ZyY+gGai4kpBnJkFkompOPJQsBJX4QawAIp5xIMYYbkHoy1Z0UzWADTqcUIDu/GqtTT6fi88YSZANySHUBUM8URBicTjYj2YAzafFwA0JXhbIBnXuP6FgAppOkI0lSqDFxOtkaKPGHqAA8lZKINSUBU1oqUMFXPDb/AQZeG960nHQ6SQmoaB1QwzukEP8CpPcBLTAlKVMlHE9QAGrUYGhgYGKgFQAAoot2F4Rm8VoAAAAASUVORK5CYII=") !important;
     background-repeat: no-repeat;
     background-position: 15% 50%;
 }
