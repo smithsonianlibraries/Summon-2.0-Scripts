@@ -91,10 +91,10 @@ function db_insert($search, $hash){
 						WHERE s.id = '$search_id'
 						AND m.id = '$search_id'") or die($db->error);
 
-			if(isset($_REQUEST['databaseRecommendations']) && (strlen($_REQUEST['databaseRecommendations']) > 0)) { // Save topic explorer data
+			if(isset($_REQUEST['dbRecommendations']) && (strlen($_REQUEST['dbRecommendations']) > 0)) { // Save topic explorer data
 
 				// Watch out for naughty bits
-				$database_text = $db->real_escape_string($_REQUEST['databaseRecommendations']);
+				$database_text = $db->real_escape_string($_REQUEST['dbRecommendations']);
 
 				$db->query("INSERT INTO database_recommendations (search_id, database_text) VALUES ('$new_id', '$database_text')") or die($db->error);
 
@@ -105,7 +105,7 @@ function db_insert($search, $hash){
 				// Watch out for naughty bits
 				$expansion = $db->real_escape_string($_REQUEST['expansion']);
 
-				$db->query("INSERT INTO expansion (search_id, expansion) VALUES ('$new_id', '$expansion')") or die($db->error);
+				$db->query("INSERT INTO query_expansion (search_id, expansion) VALUES ('$new_id', '$expansion')") or die($db->error);
 
 			}
 
@@ -143,10 +143,10 @@ function db_insert($search, $hash){
 
 			}
 
-			if(isset($_REQUEST['databaseRecommendations']) && (strlen($_REQUEST['databaseRecommendations']) > 0)) { // Save topic explorer data
+			if(isset($_REQUEST['dbRecommendations']) && (strlen($_REQUEST['dbRecommendations']) > 0)) { // Save topic explorer data
 
 				// Watch out for naughty bits
-				$database_text = $db->real_escape_string($_REQUEST['databaseRecommendations']);
+				$database_text = $db->real_escape_string($_REQUEST['dbRecommendations']);
 
 				$db->query("INSERT INTO database_recommendations (search_id, database_text) VALUES ('$new_id', '$database_text')") or die($db->error);
 
