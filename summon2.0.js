@@ -243,7 +243,7 @@ setTimeout(function() {
 
       spellingError = $('.didYouMean').text().trim();
       spellingError = spellingError.replace('Did you mean: ', '');
-      console.log('Query expansion: ' + spellingError);
+      console.log('Spelling suggestion: ' + spellingError);
 
     }
 
