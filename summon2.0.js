@@ -222,6 +222,7 @@ setTimeout(function() {
 }
 
     if($('.databaseRecommendations').length > 0) { // Check for database recommender
+      databaseRecommendations = '';
       $('.databaseRecommendations').find('ul.list-unstyled').find('li').each(function() {
         databaseRecommendations += $(this).text().trim();
         databaseRecommendations += "\n\r";
@@ -232,9 +233,17 @@ setTimeout(function() {
 
     if($('.expansionTerms').length > 0) { // Check for query expansion terms
 
-      expansion = $('.expansionTerms').text();
+      expansion = $('.expansionTerms').text().trim();
       expansion = expansion.replace('including ', '');
       console.log('Query expansion: ' + expansion);
+
+    }
+
+    if($('.didYouMean').length > 0) { // Check for query expansion terms
+
+      spellingError = $('.didYouMean').text().trim();
+      spellingError = spellingError.replace('Did you mean: ', '');
+      console.log('Query expansion: ' + spellingError);
 
     }
 
@@ -243,7 +252,7 @@ setTimeout(function() {
       var searchRequest = $.ajax({
         url: "https://gvsuliblabs.com/labs/summon2.0/summon2.php",
         method: "POST",
-        data: { search : searchQuery, topic: hasTopic, title: topicTitle, source: topicFrom, summary: topicSummary, expansion: expansion, databases: databaseRecommendations }
+        data: { search : searchQuery, topic: hasTopic, title: topicTitle, source: topicFrom, summary: topicSummary, expansion: expansion, databaseRecommendations: databaseRecommendations, spelling: spellingError }
       });
        
       searchRequest.done(function( msg ) {
