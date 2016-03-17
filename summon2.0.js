@@ -160,7 +160,7 @@ setTimeout(function() {
 
     console.log(searchQuery);
 
-    var topicTitle, topicFrom, topicSummary, hasTopic = false;
+    var topicTitle, topicFrom, topicSummary, hasTopic = false, databaseRecommendations, expansion;
 
     // Check to see if there is a Topic Explorer entry
     if($('[aria-label="Topic Summary"]').length > 0) {
@@ -220,12 +220,27 @@ setTimeout(function() {
     
     });
 }
+
+    if($('.databaseRecommendations').length > 0) { // Check for database recommender
+
+      databaseRecommendations = $('.databaseRecommendations').find('ul.list-unstyled').text();
+      console.log(databaseRecommendations);
+
+    }
+
+    if($('.expansionTerms').length > 0) { // Check for query expansion terms
+
+      expansion = $('.expansionTerms').text();
+      expansion = expansion.replace('including ', '');
+
+    }
+
     if(typeof searchQuery !== 'undefined') {
 
       var searchRequest = $.ajax({
         url: "https://gvsuliblabs.com/labs/summon2.0/summon2.php",
         method: "POST",
-        data: { search : searchQuery, topic: hasTopic, title: topicTitle, source: topicFrom, summary: topicSummary }
+        data: { search : searchQuery, topic: hasTopic, title: topicTitle, source: topicFrom, summary: topicSummary, expansion: expansion, databases: databaseRecommendations }
       });
        
       searchRequest.done(function( msg ) {

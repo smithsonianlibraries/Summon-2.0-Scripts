@@ -116,6 +116,24 @@ function db_insert($search, $hash){
 
 			}
 
+			if(isset($_REQUEST['databaseRecommendations']) && (strlen($_REQUEST['databaseRecommendations']) > 0)) { // Save topic explorer data
+
+				// Watch out for naughty bits
+				$database_text = $db->real_escape_string($_REQUEST['databaseRecommendations']);
+
+				$db->query("INSERT INTO database_recommendations (search_id, databases) VALUES ('$new_id', '$database_text')") or die($db->error);
+
+			}
+
+			if(isset($_REQUEST['expansion']) && (strlen($_REQUEST['expansion']) > 0)) { // Save topic explorer data
+
+				// Watch out for naughty bits
+				$expansion = $db->real_escape_string($_REQUEST['expansion']);
+
+				$db->query("INSERT INTO topics (search_id, expansion) VALUES ('$new_id', '$expansion')") or die($db->error);
+
+			}
+
 			echo 'Search saved.';
 
 		}	
