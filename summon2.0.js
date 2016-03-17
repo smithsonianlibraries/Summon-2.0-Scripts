@@ -242,7 +242,7 @@ setTimeout(function() {
     if($('.didYouMean').length > 0) { // Check for query expansion terms
 
       spellingError = $('.didYouMean').text().trim();
-      spellingError = spellingError.replace('Did you mean: ', '');
+      spellingError = spellingError.replace('Did you mean : ', '');
       console.log('Spelling suggestion: ' + spellingError);
 
     }
