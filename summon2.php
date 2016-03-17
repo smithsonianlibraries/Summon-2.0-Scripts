@@ -157,7 +157,7 @@ function db_insert($search, $hash){
 				// Watch out for naughty bits
 				$expansion = $db->real_escape_string($_REQUEST['expansion']);
 
-				$db->query("INSERT INTO expansion (search_id, expansion) VALUES ('$new_id', '$expansion')") or die($db->error);
+				$db->query("INSERT INTO query_expansion (search_id, expansion) VALUES ('$new_id', '$expansion')") or die($db->error);
 
 			}
 

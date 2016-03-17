@@ -241,9 +241,9 @@ setTimeout(function() {
 
     if($('.didYouMean').length > 0) { // Check for query expansion terms
 
-      spellingError = $('.didYouMean').text().trim();
-      spellingError = spellingError.replace('Did you mean : ', '');
-      console.log('Spelling suggestion: ' + spellingError);
+      spellingErrorText = $('.didYouMean').text().trim();
+      spellingError = spellingErrorText.split(': ');
+      console.log('Spelling suggestion: ' + spellingError[1]);
 
     }
 
@@ -252,7 +252,7 @@ setTimeout(function() {
       var searchRequest = $.ajax({
         url: "https://gvsuliblabs.com/labs/summon2.0/summon2.php",
         method: "POST",
-        data: { search : searchQuery, topic: hasTopic, title: topicTitle, source: topicFrom, summary: topicSummary, expansion: expansion, databaseRecommendations: databaseRecommendations, spelling: spellingError }
+        data: { search : searchQuery, topic: hasTopic, title: topicTitle, source: topicFrom, summary: topicSummary, expansion: expansion, databaseRecommendations: databaseRecommendations, spelling: spellingError[1] }
       });
        
       searchRequest.done(function( msg ) {
