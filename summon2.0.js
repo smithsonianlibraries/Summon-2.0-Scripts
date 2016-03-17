@@ -4,6 +4,11 @@
 //
 
 $(document).ready(function() {
+setTimeout(function() {
+  libMyScope = angular.element('html').scope();
+  libInitWithScope( );
+}, 1000);
+
 
   var cssPath = '//gvsuliblabs.com/labs/summon2.0/',libDetailPageId, newHref, libCurrentURL, record, recordParts, thisID,libCurrentURL = window.location.hash.substring(1);
   // Add custom styles
@@ -66,7 +71,7 @@ $(document).ready(function() {
 
    recordSearch();
 
-  }, 6000);
+  }, 4000);
 
   
   	//Track what type of content user actually click on (with GA)
@@ -233,6 +238,34 @@ $(document).ready(function() {
   //	libLog(eventName+'='+eventValue);
   	_gaq.push(['_trackEvent', 'gvsuCustomClick', eventName, eventValue]);
   }
+
+function libInitWithScope( ){
+    console.log('initialising...');
+
+    // WATCH FOR RESULTS FEED CHANGES...
+    libMyScope.$watchCollection('feed', function(){
+      // give AngularJS time to update the DOM
+      setTimeout(function() { 
+        libUpdateResultsPage(); 
+        recordSearch();
+      }, 1000);
+      console.log('Scope.feed changed! - loading finished');
+    });
+
+}
+
+function libUpdateResultsPage() {
+
+  /* Tell Zotero new COinS records have been created */
+  try {
+    var libZoteroEvent = document.createEvent('HTMLEvents');
+    libZoteroEvent.initEvent('ZoteroItemUpdated', true, true);
+    document.dispatchEvent(libZoteroEvent);
+  }
+  catch(err) {
+    console.log('Zotero error trapped');
+  }
+}
 
 
 });
