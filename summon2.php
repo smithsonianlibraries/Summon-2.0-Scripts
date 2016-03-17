@@ -96,7 +96,7 @@ function db_insert($search, $hash){
 				// Watch out for naughty bits
 				$database_text = $db->real_escape_string($_REQUEST['dbRecommendations']);
 
-				$db->query("INSERT INTO database_recommendations (search_id, database_text) VALUES ('$new_id', '$database_text')") or die($db->error);
+				$db->query("INSERT INTO database_recommendations (search_id, database_text) VALUES ('$search_id', '$database_text')") or die($db->error);
 
 			}
 
@@ -105,7 +105,7 @@ function db_insert($search, $hash){
 				// Watch out for naughty bits
 				$expansion = $db->real_escape_string($_REQUEST['expansion']);
 
-				$db->query("INSERT INTO query_expansion (search_id, expansion) VALUES ('$new_id', '$expansion')") or die($db->error);
+				$db->query("INSERT INTO query_expansion (search_id, expansion) VALUES ('$search_id', '$expansion')") or die($db->error);
 
 			}
 
@@ -114,7 +114,7 @@ function db_insert($search, $hash){
 				// Watch out for naughty bits
 				$spelling = $db->real_escape_string($_REQUEST['spelling']);
 
-				$db->query("INSERT INTO spelling (search_id, suggestion) VALUES ('$new_id', '$spelling')") or die($db->error);
+				$db->query("INSERT INTO spelling (search_id, suggestion) VALUES ('$search_id', '$spelling')") or die($db->error);
 
 			}
 
