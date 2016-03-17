@@ -176,6 +176,10 @@ setTimeout(function() {
 
       var thisUrl = encodeURIComponent(window.location);
 
+      // First remove all old help lines
+      if($('.gvsu-te-help').length > 0) {
+        $('.gvsu-te-help').remove();
+      }
       var topicExplorerButton = '<p class="gvsu-te-help" style="margin:.75em 0; border-bottom: 1px solid #999; padding: .75em 0;"><a href="http://labs.library.gvsu.edu/status/?problem&url=' + thisUrl + '" class="te_problem">Report a Problem with this Result</a><a style="float:right;display: inline-block; margin-left: 1em;" href="#" id="te-why">Why is this here?</a></p>';
       
       $('div.rightBar[aria-label="Topic Summary"]').find('.sourceLink.customPrimaryLink').addClass('btn').css('margin-top','.75em').addClass('btn-default').parent('div').append(topicExplorerButton);
