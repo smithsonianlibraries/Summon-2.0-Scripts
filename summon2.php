@@ -94,7 +94,7 @@ function db_insert($search, $hash){
 			if(isset($_REQUEST['databases']) && (strlen($_REQUEST['databases']) > 0)) { // Save topic explorer data
 
 				// Watch out for naughty bits
-				$database_text = $db->real_escape_string($_REQUEST['databaseRecommendations']);
+				$database_text = $db->real_escape_string($_REQUEST['databases']);
 
 				$db->query("INSERT INTO database_recommendations (search_id, databases) VALUES ('$new_id', '$database_text')") or die($db->error);
 
@@ -137,7 +137,7 @@ function db_insert($search, $hash){
 			if(isset($_REQUEST['databases']) && (strlen($_REQUEST['databases']) > 0)) { // Save topic explorer data
 
 				// Watch out for naughty bits
-				$database_text = $db->real_escape_string($_REQUEST['databaseRecommendations']);
+				$database_text = $db->real_escape_string($_REQUEST['databases']);
 
 				$db->query("INSERT INTO database_recommendations (search_id, databases) VALUES ('$new_id', '$database_text')") or die($db->error);
 
