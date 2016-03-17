@@ -160,7 +160,7 @@ setTimeout(function() {
 
     console.log(searchQuery);
 
-    var topicTitle, topicFrom, topicSummary, hasTopic = false, databaseRecommendations, expansion;
+    var topicTitle, topicFrom, topicSummary, hasTopic = false, databaseRecommendations, expansion, spellingError;
 
     // Check to see if there is a Topic Explorer entry
     if($('[aria-label="Topic Summary"]').length > 0) {
