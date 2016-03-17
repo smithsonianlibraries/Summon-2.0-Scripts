@@ -222,9 +222,11 @@ setTimeout(function() {
 }
 
     if($('.databaseRecommendations').length > 0) { // Check for database recommender
-
-      databaseRecommendations = $('.databaseRecommendations').find('ul.list-unstyled').text();
-      console.log(databaseRecommendations);
+      $('.databaseRecommendations').find('ul.list-unstyled').find('li').each(function() {
+        databaseRecommendations += $(this).text().trim();
+        databaseRecommendations += "\n\r";
+      });
+      console.log('Database Recommendations: ' + databaseRecommendations);
 
     }
 
@@ -232,6 +234,7 @@ setTimeout(function() {
 
       expansion = $('.expansionTerms').text();
       expansion = expansion.replace('including ', '');
+      console.log('Query expansion: ' + expansion);
 
     }
 
