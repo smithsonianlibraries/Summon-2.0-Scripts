@@ -16,7 +16,7 @@ setTimeout(function() {
   console.log('Added custom stylesheet.');
 
 
-    
+
   setTimeout(function() {
 
     var li = document.createElement('div');
@@ -47,7 +47,7 @@ setTimeout(function() {
     }
 
     // I want the logo to be a bit bigger
-    $(".siteHeader .Logo img").attr("src", "//gvsu.edu/homepage/files/img/gvsu_logo.png");
+    $(".siteHeader .Logo img").attr("src", "//www.gvsu.edu/includes/topbanner/3/gvsu_logo%5B0%5D.png");
     console.log('Made the logo bigger.');
 
     // Proquest has 2 links both labeled "Log in" that go to different places
@@ -55,8 +55,8 @@ setTimeout(function() {
     $('form.flowLogin').find('input[type="submit"]').attr('title', 'Save and organize citations to make research and writing easier.');
     console.log('Changed the title attribute for the RefWorks log in link.');
 
-    
-    // Overwrite any mention of Zumberge Library because we moved out of there 2 years ago and 
+
+    // Overwrite any mention of Zumberge Library because we moved out of there 2 years ago and
     // what are you guys even doing over there at ProQuest I can't even
     $('li[row-value="document.libraries"]').find('span[ng-class="valueClass"]:contains("Zumberge")').text('Mary Idema Pew Library');
     console.log('Replaced a mention of Zumberge Library with Mary I.');
@@ -73,7 +73,7 @@ setTimeout(function() {
 
   }, 4000);
 
-  
+
   	//Track what type of content user actually click on (with GA)
   	$('div.inner').on('click','a[ng-class="linkClass"] , a.availabilityLink', function() {
   		var libContentType = $(this).closest('div.summary').find('div.contentType span.ng-binding').text();
@@ -177,11 +177,11 @@ setTimeout(function() {
       var thisUrl = encodeURIComponent(window.location);
 
       // First remove all old help lines
-      if($('.gvsu-te-help').length > 0) { 
+      if($('.gvsu-te-help').length > 0) {
         $('.gvsu-te-help').remove();
       }
       var topicExplorerButton = '<p class="gvsu-te-help" style="margin:.75em 0; border-bottom: 1px solid #999; padding: .75em 0;"><a href="http://labs.library.gvsu.edu/status/?problem&url=' + thisUrl + '" class="te_problem">Report a Problem with this Result</a><a style="float:right;display: inline-block; margin-left: 1em;" href="#" id="te-why">Why is this here?</a></p>';
-      
+
       $('div.rightBar[aria-label="Topic Summary"]').find('.sourceLink.customPrimaryLink').addClass('btn').css('margin-top','.75em').addClass('btn-default').parent('div').append(topicExplorerButton);
 
        $('.te_problem').click(function(e) {
@@ -189,22 +189,22 @@ setTimeout(function() {
 
         var problemMessage = 'Search: ' + searchQuery + "\n\r" + 'Topic: ' + topicTitle + "\n\r" + 'Source: ' + topicFrom +  "\n" + 'Summary: ' + topicSummary;
         console.log(problemMessage);
-       
+
         var teProblem = $.ajax({
         url: "https://gvsuliblabs.com/labs/te/index.php",
         method: "POST",
         data: { feedback : problemMessage, url: thisUrl }
       });
-       
+
       teProblem.done(function( msg ) {
         console.log('Saved search query: ' + msg);
         $('.te_problem').css('color', 'green').removeClass('te_problem').html(msg);
       });
-       
+
       teProblem.fail(function( jqXHR, textStatus ) {
         console.log( "Request failed: " + textStatus );
       });
-      
+
     });
 
       $('#te-why').click(function(e) {
@@ -217,7 +217,7 @@ setTimeout(function() {
         $(".close-button").click(function() {
           $(".overlay").hide();
         });
-    
+
     });
 }
 
@@ -255,11 +255,11 @@ setTimeout(function() {
         method: "POST",
         data: { search : searchQuery, topic: hasTopic, title: topicTitle, source: topicFrom, summary: topicSummary, expansion: expansion, dbRecommendations: databaseRecommendations, spelling: spellingError }
       });
-       
+
       searchRequest.done(function( msg ) {
         console.log('Saved search query: ' + msg);
       });
-       
+
       searchRequest.fail(function( jqXHR, textStatus ) {
         console.log( "Request failed: " + textStatus );
       });
@@ -277,8 +277,8 @@ function libInitWithScope( ){
     // WATCH FOR RESULTS FEED CHANGES...
     libMyScope.$watchCollection('feed', function(){
       // give AngularJS time to update the DOM
-      setTimeout(function() { 
-        libUpdateResultsPage(); 
+      setTimeout(function() {
+        libUpdateResultsPage();
         recordSearch();
       }, 1000);
       console.log('Scope.feed changed! - loading finished');
