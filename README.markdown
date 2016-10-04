@@ -4,4 +4,8 @@ These files are the JavaScript, CSS, and PHP scripts that modify the stock Summo
 
 #### Questions?
 
-Ask Matthew Reidsma, Web Services Librarian at [reidsmam@gvsu.edu](mailto:reidsmam@gvsu.edu) or [@mreidsma](http://twitter.com/mreidsma).
+Ask Joel Richard, Head of Web Services at [richardjm@si.edu](mailto:richardjm@si.edu).
+
+#### Credit
+
+This was forked from Grand Valley State University's [GitHub repo of the same name](https://github.com/gvsulib/Summon-2.0-Scripts)
